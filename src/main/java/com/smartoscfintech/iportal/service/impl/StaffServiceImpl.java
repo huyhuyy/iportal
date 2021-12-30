@@ -1,7 +1,6 @@
 package com.smartoscfintech.iportal.service.impl;
 import com.smartoscfintech.iportal.common.util.DateUtils;
 import com.smartoscfintech.iportal.controller.dto.StaffDto;
-import com.smartoscfintech.iportal.controller.dto.TransactionDto;
 import com.smartoscfintech.iportal.controller.dto.UserDto;
 import com.smartoscfintech.iportal.controller.dto.request.UserSearchRequest;
 import com.smartoscfintech.iportal.controller.dto.response.PagingResponse;
@@ -63,14 +62,6 @@ public class StaffServiceImpl implements StaffService {
             transactionResponses.add(transactionResponse);
         });
         return transactionResponses;
-    }
-
-    @Override
-    public List<StaffDto> getAllStaff() {
-        List<StaffEntity> staffEntities = staffRepository.findAll();
-        List<StaffDto> staffDtos = StaffMapper.INSTANCE.map(staffEntities);
-
-        return staffDtos;
     }
 
     @Override

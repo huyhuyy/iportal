@@ -16,5 +16,4 @@ public class StaffDto {
     String username;
     long pending;
     long complete;
-    Long id_Transaction;
 }

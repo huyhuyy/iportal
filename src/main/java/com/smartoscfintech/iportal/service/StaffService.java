@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface StaffService {
     PagingResponse<UserDto> getListStaff(UserSearchRequest userRequest);
-    List<StaffDto> getAllStaff();
+
     StaffDto getStaff(Long id);
     List<TransactionResponse> getTransactionByStaff(Long id);
 }

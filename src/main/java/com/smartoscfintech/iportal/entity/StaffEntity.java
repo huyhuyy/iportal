@@ -51,7 +51,7 @@ public class StaffEntity extends AuditingEntity {
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY )
     DocumentEntity avatar;
 
-    //tro toi bien staff trong TransactionEntity
     @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
     private List<TransactionEntity> transaction = new ArrayList<>();
+
 }

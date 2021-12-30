@@ -27,12 +27,6 @@ public interface StaffController {
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     Response<PagingResponse<UserDto>> listStaff(@RequestBody @Valid UserSearchRequest userRequest);
 
-    @GetMapping
-    @Operation(description = "list staff")
-    @ApiResponse(responseCode = "200", description = "Success")
-    @ApiResponse(responseCode = "400" , description = "Bad request")
-    Response<List<StaffDto>> getAllStaff();
-
     @GetMapping("/{id}")
     @Operation(description = "Get staff by id")
     @ApiResponse(responseCode = "200", description = "Succsess")

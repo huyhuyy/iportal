@@ -15,4 +15,5 @@ public class TransactionResponse {
     private String doctype;
     private String branch;
     private String ekycStatus;
+    private String approver;
 }

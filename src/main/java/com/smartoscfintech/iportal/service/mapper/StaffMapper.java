@@ -31,15 +31,10 @@ public interface StaffMapper {
     @Mapping(target = "businessUnit", source = "entity.primaryGroup")
     StaffResponse mapToResponse(StaffEntity entity, List<String> roleNames);
 
-
-
     StaffMapper INSTANCE = Mappers.getMapper(StaffMapper.class);
-
     @Named("mapStaffEntityToDto")
     StaffDto mapToDto(StaffEntity staffEntity);
-
     StaffEntity mapToEntity(StaffDto staffDto);
-
     List<StaffDto> map(List<StaffEntity> staffEntities);
 }
 

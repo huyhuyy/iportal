@@ -1,14 +1,13 @@
 package com.smartoscfintech.iportal.service.mapper;
 
-import com.smartoscfintech.iportal.controller.dto.TransactionDto;
 import com.smartoscfintech.iportal.controller.dto.response.TransactionResponse;
 import com.smartoscfintech.iportal.entity.EkycTransactionEntity;
+import com.smartoscfintech.iportal.entity.GroupEntity;
 import com.smartoscfintech.iportal.entity.RoleEntity;
+import com.smartoscfintech.iportal.entity.StaffEntity;
 import com.smartoscfintech.iportal.entity.TransactionEntity;
 import com.smartoscfintech.iportal.entity.enums.DocType;
 import com.smartoscfintech.iportal.entity.enums.EkycStatus;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.Generated;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-12-30T16:06:10+0700",
+    date = "2021-12-30T17:30:06+0700",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.6 (Oracle Corporation)"
 )
 @Component
@@ -36,52 +35,14 @@ public class TransactionMapperImpl implements TransactionMapper {
         if ( docType != null ) {
             transactionResponse.setDoctype( docType.name() );
         }
+        transactionResponse.setBranch( entityStaffPrimaryGroupName( entity ) );
+        transactionResponse.setApprover( entityApproverFullName( entity ) );
         EkycStatus ekycStatus = entityEkycTransactionEkycStatus( entity );
         if ( ekycStatus != null ) {
             transactionResponse.setEkycStatus( ekycStatus.name() );
         }
 
         return transactionResponse;
-    }
-
-    @Override
-    public TransactionDto mapToDto(TransactionEntity transactionEntity) {
-        if ( transactionEntity == null ) {
-            return null;
-        }
-
-        TransactionDto transactionDto = new TransactionDto();
-
-        transactionDto.setId( transactionEntity.getId() );
-
-        return transactionDto;
-    }
-
-    @Override
-    public TransactionEntity mapToEntity(TransactionDto transactionDto) {
-        if ( transactionDto == null ) {
-            return null;
-        }
-
-        TransactionEntity transactionEntity = new TransactionEntity();
-
-        transactionEntity.setId( transactionDto.getId() );
-
-        return transactionEntity;
-    }
-
-    @Override
-    public List<TransactionDto> map(List<TransactionEntity> transactionEntities) {
-        if ( transactionEntities == null ) {
-            return null;
-        }
-
-        List<TransactionDto> list = new ArrayList<TransactionDto>( transactionEntities.size() );
-        for ( TransactionEntity transactionEntity : transactionEntities ) {
-            list.add( mapToDto( transactionEntity ) );
-        }
-
-        return list;
     }
 
     private String entityEkycTransactionFullName(TransactionEntity transactionEntity) {
@@ -127,6 +88,40 @@ public class TransactionMapperImpl implements TransactionMapper {
             return null;
         }
         return docType;
+    }
+
+    private String entityStaffPrimaryGroupName(TransactionEntity transactionEntity) {
+        if ( transactionEntity == null ) {
+            return null;
+        }
+        StaffEntity staff = transactionEntity.getStaff();
+        if ( staff == null ) {
+            return null;
+        }
+        GroupEntity primaryGroup = staff.getPrimaryGroup();
+        if ( primaryGroup == null ) {
+            return null;
+        }
+        String name = primaryGroup.getName();
+        if ( name == null ) {
+            return null;
+        }
+        return name;
+    }
+
+    private String entityApproverFullName(TransactionEntity transactionEntity) {
+        if ( transactionEntity == null ) {
+            return null;
+        }
+        StaffEntity approver = transactionEntity.getApprover();
+        if ( approver == null ) {
+            return null;
+        }
+        String fullName = approver.getFullName();
+        if ( fullName == null ) {
+            return null;
+        }
+        return fullName;
     }
 
     private EkycStatus entityEkycTransactionEkycStatus(TransactionEntity transactionEntity) {
