@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  postgres-service:
+    container_name: postgres-service
+    image: postgres:13.0
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-root}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+    restart: always
+networks:
+  backend:
+    driver: bridge
+volumes:
+  postgres_volume:
+    driver: local

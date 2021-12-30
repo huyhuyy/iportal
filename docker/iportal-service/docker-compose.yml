@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  iportal-be:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    container_name: iportal-be
+    ports:
+      - "9090:9090"
+      - "5005:5005"
+    environment:
+      - DB_URL=jdbc:postgresql://192.168.5.192:5432/postgres
+      - MINIO_URL=http://192.168.5.192:9000
+    restart: always
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
