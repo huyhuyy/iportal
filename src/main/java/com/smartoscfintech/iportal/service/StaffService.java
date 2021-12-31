@@ -12,7 +12,5 @@ import java.util.List;
 
 public interface StaffService {
     PagingResponse<UserDto> getListStaff(UserSearchRequest userRequest);
-
-    StaffDto getStaff(Long id);
-    List<TransactionResponse> getTransactionByStaff(Long id);
+    List<TransactionResponse> getTransactionOfStaff(Long id);
 }

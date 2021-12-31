@@ -28,16 +28,6 @@ public interface StaffController {
     Response<PagingResponse<UserDto>> listStaff(@RequestBody @Valid UserSearchRequest userRequest);
 
     @GetMapping("/{id}")
-    @Operation(description = "Get staff by id")
-    @ApiResponse(responseCode = "200", description = "Succsess")
-    @ApiResponse(responseCode = "400", description = "Bad request")
-    @ApiResponse(responseCode = "404", description = "Not Found Exception")
-    @ApiResponse(responseCode = "405", description = "Method Not Allow")
-    @ApiResponse(responseCode = "409", description = "Business Validation Exception")
-    @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    Response<StaffDto> getStaff(@PathVariable Long id);
-
-    @GetMapping("/{id}/Transactions")
     @Operation(description = "Get Transactions of staff")
     @ApiResponse(responseCode = "200", description = "Success")
     @ApiResponse(responseCode = "400", description = "Bad request")
@@ -45,5 +35,5 @@ public interface StaffController {
     @ApiResponse(responseCode = "405", description = "Method Not Allow")
     @ApiResponse(responseCode = "409", description = "Business Validation Exception")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    Response<List<TransactionResponse>> getTransactionByStaff(@PathVariable Long id);
+    Response<List<TransactionResponse>> getTransactionOfStaff(@PathVariable Long id);
 }

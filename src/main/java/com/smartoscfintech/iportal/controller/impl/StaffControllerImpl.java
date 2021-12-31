@@ -26,16 +26,10 @@ public class StaffControllerImpl implements StaffController {
         PagingResponse<UserDto> data =  staffService.getListStaff(userRequest);
         return Response.ok(data);
     }
-    
-    @Override
-    public Response<StaffDto> getStaff(Long id) {
-        StaffDto response = staffService.getStaff(id);
-        return Response.ok(response);
-    }
 
     @Override
-    public Response<List<TransactionResponse>> getTransactionByStaff(Long id) {
-        List<TransactionResponse> response = staffService.getTransactionByStaff(id);
+    public Response<List<TransactionResponse>> getTransactionOfStaff(Long id) {
+        List<TransactionResponse> response = staffService.getTransactionOfStaff(id);
         return Response.ok(response);
     }
 }

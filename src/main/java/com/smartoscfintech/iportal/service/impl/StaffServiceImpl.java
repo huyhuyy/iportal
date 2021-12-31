@@ -1,6 +1,5 @@
 package com.smartoscfintech.iportal.service.impl;
 import com.smartoscfintech.iportal.common.util.DateUtils;
-import com.smartoscfintech.iportal.controller.dto.StaffDto;
 import com.smartoscfintech.iportal.controller.dto.UserDto;
 import com.smartoscfintech.iportal.controller.dto.request.UserSearchRequest;
 import com.smartoscfintech.iportal.controller.dto.response.PagingResponse;
@@ -21,7 +20,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 
-import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,27 +48,11 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public List<TransactionResponse> getTransactionByStaff(Long id) {
-        Optional<StaffEntity> staff = staffRepository.findById(id);
-        if(!staff.isPresent()) {
-            throw new EntityNotFoundException();
-        }
-        List<TransactionEntity> transactionEntities = staff.get().getTransaction();
-        List<TransactionResponse> transactionResponses = new ArrayList<>();
-        transactionEntities.forEach(transactionEntity -> {
-            TransactionResponse transactionResponse = transactionMapper.mapToTransactionResponse(transactionEntity);
-            transactionResponses.add(transactionResponse);
-        });
+    public List<TransactionResponse> getTransactionOfStaff(Long id) {
+        List<TransactionEntity> transactionEntities = staffRepository.findById(id).get().getTransaction();
+        List<TransactionResponse> transactionResponses = transactionEntities.stream().
+                map(transactionMapper::mapToTransactionResponse).collect(Collectors.toList());
         return transactionResponses;
-    }
-
-    @Override
-    public StaffDto getStaff(Long id) {
-        Optional<StaffEntity> staff = staffRepository.findById(id);
-        if (!staff.isPresent()) {
-            throw new EntityNotFoundException();
-        }
-        return StaffMapper.INSTANCE.mapToDto(staff.get());
     }
 
     private Specification<StaffEntity> buildSpecification(UserSearchRequest request) {

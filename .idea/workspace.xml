@@ -32,7 +32,14 @@
     <list default="true" id="a2163126-80ad-4da8-84e4-3404e8913a5d" name="Default Changelist" comment="fix bug transaction list">
       <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/controller/EkycTransactionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/controller/dto/EkycTransactionDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/controller/dto/response/TransactionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/controller/impl/EkycTransactionControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/repository/EkycTransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/service/EkycTransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/service/impl/EkycTransactionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/service/mapper/EkycTransactionMapper.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/smartoscfintech/iportal/service/mapper/TransactionMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/98b31714-4335-4edd-b779-912f0c007f15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/98b31714-4335-4edd-b779-912f0c007f15.xml" afterDir="false" />
@@ -60,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -267,6 +274,8 @@
       <workItem from="1640785211311" duration="187000" />
       <workItem from="1640830628705" duration="7299000" />
       <workItem from="1640845192118" duration="14797000" />
+      <workItem from="1640868833508" duration="8287000" />
+      <workItem from="1640916440409" duration="225000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug transaction list">
       <created>1627453388114</created>
